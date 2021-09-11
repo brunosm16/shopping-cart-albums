@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect, useReducer, useState } from 'react';
-import UseHttp from '../hooks/use-input';
+import UseHttp from '../hooks/use-http';
 import CartReducer, { defaultCartReducer } from '../reducers/cart-reducer';
 import { ENDPOINT, headerJSON } from '../utils/http-utils';
 import ShoppingCartContext from './shopping-cart-context';

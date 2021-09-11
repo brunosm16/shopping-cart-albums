@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 1rem auto;
+    border-bottom: 2px var(--clr-primary-4) solid;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+}
+
+.heading h2 {
+    margin-top: 1rem;
+}
+
+.icon {
+    font-size: 3rem;
+}

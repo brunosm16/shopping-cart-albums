@@ -1,13 +1,150 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*
+=======================
+  Fonts
+=======================
+*/
+@import url('https://fonts.googleapis.com/css2?family=Urbanist');
+@import url('https://fonts.googleapis.com/css2?family=Glory');
+
+/*
+=======================
+  Variables
+=======================
+*/
+:root {
+	/* linear gradients */
+	--linear-gradient-1: linear-gradient(to right, #ffdde1, #ee9ca7);
+	--linear-gradient-2: linear-gradient(to right, #d3cce3, #e9e4f0);
+
+	/* dark shades primary color */
+	--clr-primary-1: hsl(353, 100%, 93%);
+	--clr-primary-2: hsl(353, 100%, 83%);
+	--clr-primary-3: hsl(353, 100%, 73%);
+	--clr-primary-4: hsl(353, 100%, 63%);
+
+	/* dark shades of purple */
+	--clr-purple-1: hsl(265, 29%, 92%);
+	--clr-purple-2: hsl(265, 29%, 89%);
+	--clr-purple-3: hsl(265, 29%, 85%);
+	--clr-purple-4: hsl(265, 29%, 80%);
+	--clr-purple-5: hsl(265, 29%, 70%);
+
+	/* other colors */
+	--clr-white: #fffffc;
+	--clr-black: #001219;
+	--clr-red: #e63946;
+
+	/* shadows */
+	--box-shadow-dark: 0px 8px 24px rgba(149, 157, 165, 0.2);
+	--box-shadow-light: 0px 8px 24px rgba(149, 157, 165, 0.5);
+
+	/* fonts */
+	--ff-primary: 'Urbanist', sans-serif;
+	--ff-secondary: 'Glory', sans-serif;
+
+	/* widhts */
+	--fixed-width: 620px;
+	--max-width: 1170px;
+
+	/* other variables */
+	--transition: all 0.3s linear;
+	--radius: 0.5rem;
+	--spacing: 0.15rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+::before,
+::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	font-family: var(--ff-primary);
+	font-size: 0.875rem;
+	line-height: 1.5;
+	background: var(--linear-gradient-1);
+	color: var(--clr-primary-4);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	margin-bottom: 0.625rem;
+	text-transform: capitalize;
+	letter-spacing: var(--spacing);
+	line-height: 1.25;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 1.75rem;
+}
+
+h3 {
+	font-size: 1.2rem;
+}
+
+h4 {
+	font-size: 0.875rem;
+}
+
+p {
+	margin-bottom: 1.2rem;
+	color: var(--clr-primary-3);
+}
+
+@media screen and (min-width: 800px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.2rem;
+	}
+
+	h4 {
+		font-size: 1rem;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		line-height: 1;
+	}
+}
+
+main {
+	width: 90vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.875rem;
+}
+
+@media screen and (min-width: 800px) {
+	main {
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 0;
+	}
 }

@@ -1,2 +1,4 @@
-const App = () => <h1>Shopping Cart App</h1>;
+import Header from './components/Header/Header';
+
+const App = () => <Header />;
 export default App;

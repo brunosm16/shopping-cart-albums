@@ -1,0 +1,29 @@
+.btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+    background: var(--clr-purple-1);
+    color:var(--clr-primary-3);
+    border: transparent;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--clr-purple-2);
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-primary-2);
+    color:var(--clr-purple-1);
+    width: 50px;
+    height: 30px;
+}

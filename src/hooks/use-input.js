@@ -1,45 +1,42 @@
-import { useCallback, useState } from 'react';
+import { useReducer } from 'react';
+import InputReducer from '../reducers/input-reducer';
 
-const UseHttp = () => {
-	const [requestError, setRequestError] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
+const defaultInputState = {
+	value: '',
+	isTouched: false,
+};
 
-	const sendRequest = useCallback(
-		async (reqConfigObj, setData, setError = () => {}) => {
-			/* Clear any previous states */
-			setRequestError(null);
-			setIsLoading(false);
+const UseInput = (validateInput) => {
+	const [inputState, dispatch] = useReducer(InputReducer, defaultInputState);
 
-			try {
-				setIsLoading(true);
+	const inputIsValid = validateInput(inputState.value);
+	const inputHasError = !inputIsValid && inputState.isTouched;
 
-				const response = await fetch(reqConfigObj.url, {
-					method: reqConfigObj.method || 'GET',
-					headers: reqConfigObj.headers || null,
-					body: reqConfigObj ? JSON.stringify(reqConfigObj.body) : null,
-				});
+	const inputChangeHandler = (event) => {
+		dispatch({ type: 'INPUT_USER', value: event.target.value });
+	};
 
-				if (!response.ok) {
-					throw new Error('An Error occurred while processing your request');
-				}
+	const inputBlurHandler = () => {
+		dispatch({ type: 'INPUT_BLUR' });
+	};
 
-				const data = await response.json();
-				setData(data);
-			} catch (err) {
-				setError(true);
-				setRequestError(err.message);
-			}
+	const inputResetHandler = () => {
+		dispatch({ type: 'INPUT_RESET' });
+	};
 
-			setIsLoading(false);
-		},
-		[]
-	);
+	const setInputValue = (value) => {
+		dispatch({ type: 'INPUT_USER', value });
+	};
 
 	return {
-		isLoading,
-		requestError,
-		sendRequest,
+		value: inputState.value,
+		inputIsValid,
+		inputHasError,
+		inputChangeHandler,
+		inputBlurHandler,
+		inputResetHandler,
+		setInputValue,
 	};
 };
 
-export default UseHttp;
+export default UseInput;
