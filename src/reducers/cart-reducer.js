@@ -54,8 +54,8 @@ const CartReducer = (state, action) => {
 
 	if (action.type === REMOVE) {
 		const currItems = state.items;
-		const id = action.value;
-		const itemToDelete = currItems[findExistingIdIndex(id)];
+		const { id } = action;
+		const itemToDelete = currItems[findExistingIdIndex(id, currItems)];
 		const totalPrice = state.totalPrice - itemToDelete.price;
 
 		let updatedItems = [];

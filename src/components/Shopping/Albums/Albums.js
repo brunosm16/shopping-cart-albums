@@ -9,6 +9,8 @@ import {
 	headerJSON,
 } from '../../../utils/http-utils';
 import { dateToHTML } from '../../../utils/utils';
+import Card from '../../UI/Card/Card';
+import List from '../../UI/List/List';
 import AlbumItem from './AlbumItem';
 import styles from './Albums.module.css';
 
@@ -58,7 +60,7 @@ const Albums = () => {
 
 	if (albums.length !== 0) {
 		albumsList = (
-			<ul className={styles.list}>
+			<List className={styles.list}>
 				{albums.map((album) => (
 					<AlbumItem
 						key={album.id}
@@ -70,7 +72,7 @@ const Albums = () => {
 						onAddItem={handleAddItem}
 					/>
 				))}
-			</ul>
+			</List>
 		);
 	}
 
@@ -91,10 +93,10 @@ const Albums = () => {
 	}
 
 	return (
-		<div className={styles.albums}>
+		<Card cssClass={styles.card}>
 			{!successfulRequest && requestInfo}
 			{successfulRequest && albumsList}
-		</div>
+		</Card>
 	);
 };
 

@@ -1,0 +1,14 @@
+.card {
+	height: 100%;
+	width: 90%;
+	background: var(--clr-primary-2);
+	padding: 1.25rem 1rem;
+	border-radius: 15px;
+	margin: 0 2rem; 
+}
+
+@media screen and (min-width: 800px) {
+	.card {
+		width: 50%;
+	}
+}

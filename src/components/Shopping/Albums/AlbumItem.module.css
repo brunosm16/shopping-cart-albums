@@ -1,11 +1,3 @@
-.item {
-    padding: 1rem;
-    color:var(--clr-red);
-    border-radius: 8px;
-    margin-right: 1rem;
-    background: var(--linear-gradient-2);
-}
-
 .info-container {
     display: flex;
     justify-content: space-between;

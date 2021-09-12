@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './AlbumItem.module.css';
 import Button from '../../UI/Button/Button';
+import ListItem from '../../UI/List/ListItem';
 
 const AlbumItem = ({ id, name, artist, price, releaseDate, onAddItem }) => {
 	const handleAddItem = () => {
@@ -13,7 +14,7 @@ const AlbumItem = ({ id, name, artist, price, releaseDate, onAddItem }) => {
 	};
 
 	return (
-		<li className={styles.item}>
+		<ListItem>
 			<div className={styles['info-container']}>
 				<div className={styles.info}>
 					<h3>{name}</h3>
@@ -29,7 +30,7 @@ const AlbumItem = ({ id, name, artist, price, releaseDate, onAddItem }) => {
 			<div className={styles.actions}>
 				<Button onClick={handleAddItem}>add to cart</Button>
 			</div>
-		</li>
+		</ListItem>
 	);
 };
 

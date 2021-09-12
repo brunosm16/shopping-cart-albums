@@ -1,0 +1,17 @@
+.empty-orders-msg {
+	display: flex;
+	justify-content: center;
+	height: inherit;
+    color:var(--clr-white);
+    font-weight: bold;
+}
+
+.empty-orders-msg h2 {
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .empty-orders-msg {
+        align-items: center;
+    }
+}

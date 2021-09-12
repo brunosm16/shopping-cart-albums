@@ -13,6 +13,7 @@ const ShoppingCartContextProvider = ({ children }) => {
 	};
 
 	const handleRemoveCartItemById = (id) => {
+		console.log(cartState.items);
 		dispatchCart({ type: 'REMOVE_ITEM', id });
 	};
 
