@@ -5,13 +5,13 @@ const context = {
 	albums: [],
 	items: [],
 	totalPrice: 0,
-	requestMessage: {},
 	onAddCartItem: (item) => {},
 	onRemoveCartItemById: (id) => {},
 	onResetCartItem: () => {},
 	onLoadAlbums: (albumsArr) => {},
-	onSetRequestMessage: (isError, isLoading, isSuccessful, message) => {},
-	onResetRequestMessage: () => {},
+	onConfirmOrder: (order) => {},
+	isLoading: '',
+	requestError: '',
 };
 
 const ShoppingCartContext = React.createContext(context);

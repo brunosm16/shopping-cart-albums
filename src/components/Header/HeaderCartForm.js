@@ -93,10 +93,11 @@ const HeaderCartForm = ({ onCancel, onConfirm }) => {
 
 	const saveInput = () => {
 		onConfirm({
-			nameValue,
-			addressValue,
-			postalCodeValue,
-			emailValue,
+			name: nameValue,
+			address: addressValue,
+			postalCode: postalCodeValue,
+			email: emailValue,
+			items,
 		});
 
 		resetForm();

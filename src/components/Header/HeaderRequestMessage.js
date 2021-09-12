@@ -1,29 +1,20 @@
-import { useContext } from 'react';
-import ShoppingCartContext from '../../store/shopping-cart-context';
+import PropTypes from 'prop-types';
 import styles from './HeaderRequestMessage.module.css';
 
-const HeaderRequestMessage = () => {
-	const { requestMessage } = useContext(ShoppingCartContext);
+const HeaderRequestMessage = ({ cssClass, message }) => (
+	<div className={`${styles['request-header']} ${cssClass}`}>
+		<h3>{message}</h3>
+	</div>
+);
 
-	let cssClass = 'msg-';
+HeaderRequestMessage.defaultProps = {
+	cssClass: '',
+	message: '',
+};
 
-	if (requestMessage.isError) {
-		cssClass += 'error';
-	}
-
-	if (requestMessage.isLoading) {
-		cssClass += 'loading';
-	}
-
-	if (requestMessage.isSuccessful) {
-		cssClass += 'successful';
-	}
-
-	return (
-		<div className={`${styles['request-header']} ${styles[cssClass]}`}>
-			<h3>{requestMessage.value}</h3>
-		</div>
-	);
+HeaderRequestMessage.propTypes = {
+	cssClass: PropTypes.string,
+	message: PropTypes.string,
 };
 
 export default HeaderRequestMessage;

@@ -2,18 +2,20 @@ import PropTypes from 'prop-types';
 import { useReducer, useState } from 'react';
 import CartReducer, { defaultCartReducer } from '../reducers/cart-reducer';
 import ShoppingCartContext from './shopping-cart-context';
+import UseHttp from '../hooks/use-http';
+import { ENDPOINT, headerJSON } from '../utils/http-utils';
 
 const ShoppingCartContextProvider = ({ children }) => {
 	const [albums, setAlbums] = useState([]);
 	const [cartState, dispatchCart] = useReducer(CartReducer, defaultCartReducer);
-	const [requestMessage, setRequestMessage] = useState();
+
+	const { isLoading, requestError, sendRequest: sendOrder } = UseHttp();
 
 	const handleAddCartItem = (item) => {
 		dispatchCart({ type: 'ADD_ITEM', item });
 	};
 
 	const handleRemoveCartItemById = (id) => {
-		console.log(cartState.items);
 		dispatchCart({ type: 'REMOVE_ITEM', id });
 	};
 
@@ -25,12 +27,13 @@ const ShoppingCartContextProvider = ({ children }) => {
 		setAlbums((previousData) => [...previousData, ...albumsArr]);
 	};
 
-	const handleSetRequestMessage = (message) => {
-		setRequestMessage(message);
-	};
-
-	const handleResetRequestMessage = () => {
-		setRequestMessage(null);
+	const handleConfirmOrder = (body) => {
+		sendOrder({
+			url: `${ENDPOINT}/orders.json`,
+			body,
+			method: 'POST',
+			headers: headerJSON,
+		});
 	};
 
 	return (
@@ -39,13 +42,13 @@ const ShoppingCartContextProvider = ({ children }) => {
 				albums,
 				items: cartState.items,
 				totalPrice: cartState.totalPrice,
-				requestMessage,
 				onAddCartItem: handleAddCartItem,
 				onRemoveCartItemById: handleRemoveCartItemById,
 				onResetCartItem: handleResetCartItem,
 				onLoadAlbums: handleLoadAlbums,
-				onSetRequestMessage: handleSetRequestMessage,
-				onResetRequestMessage: handleResetRequestMessage,
+				onConfirmOrder: handleConfirmOrder,
+				isLoading,
+				requestError,
 			}}
 		>
 			{children}

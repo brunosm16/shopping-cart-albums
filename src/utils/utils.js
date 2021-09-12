@@ -42,7 +42,7 @@ export const validateEmail = (email) =>
 export const validateAddress = (address) => address.trim().length >= 8;
 
 export const validatePostalCode = (postalCode) =>
-	postalCode.trim().length >= 12;
+	postalCode.trim().length >= 6;
 
 /**
  * Insert a 0 in front of numbers lower than 0
