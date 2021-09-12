@@ -9,19 +9,25 @@ import {
 	DEFAULT_ERROR_MESSAGE,
 	DEFAULT_LOADING_MESSAGE,
 	headerJSON,
+	DEFAULT_SUCCESSFUL_MESSAGE,
 } from '../../utils/http-utils';
 import { findItemById } from '../../utils/utils';
 
 const HeaderCartButton = () => {
 	const [formIsOpen, setFormIsOpen] = useState(false);
-	const { cart, onSetRequestMessage, albums } = useContext(ShoppingCartContext);
+	const {
+		cart,
+		onSetErrorMessage,
+		onSetLoadingMessage,
+		onSetSuccessfulMessage,
+		albums,
+	} = useContext(ShoppingCartContext);
 
 	const price = cart.items.reduce(
 		(currNumber, item) => currNumber + item.amount,
 		0
 	);
 
-	/* Http  hooks */
 	const {
 		isLoading: productsRequestLoading,
 		requestError: productsRequestError,
@@ -34,13 +40,17 @@ const HeaderCartButton = () => {
 		sendRequest: postOrder,
 	} = UseHttp();
 
-	const updateRequestMessage = (loading, error) => {
+	const updateRequestMessage = (loading, error, successful) => {
 		if (loading) {
-			onSetRequestMessage(DEFAULT_LOADING_MESSAGE, false, false);
+			onSetLoadingMessage(DEFAULT_LOADING_MESSAGE);
 		}
 
 		if (error) {
-			onSetRequestMessage(DEFAULT_ERROR_MESSAGE, true, false);
+			onSetErrorMessage(DEFAULT_ERROR_MESSAGE);
+		}
+
+		if (successful) {
+			onSetSuccessfulMessage(DEFAULT_SUCCESSFUL_MESSAGE);
 		}
 	};
 
@@ -87,6 +97,13 @@ const HeaderCartButton = () => {
 	const handleOpenForm = () => {
 		setFormIsOpen(true);
 	};
+
+	const requestsLoading = productsRequestLoading || orderRequestLoading;
+	const requestsError = productsRequestError || orderRequestError;
+
+	if (!requestsLoading && !requestsError) {
+		updateRequestMessage(false, false, true);
+	}
 
 	return (
 		<>

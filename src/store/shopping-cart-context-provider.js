@@ -65,7 +65,7 @@ const ShoppingCartContextProvider = ({ children }) => {
 			isError,
 		});
 	};
-
+	
 	const handleResetRequestMessage = () => {
 		dispatchRequestMessage({ type: 'RESET_MESSAGE' });
 	};

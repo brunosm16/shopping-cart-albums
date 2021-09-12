@@ -4,12 +4,13 @@ import HeaderRequestMessage from './components/Header/HeaderRequestMessage';
 import ShoppingCartContext from './store/shopping-cart-context';
 
 const App = () => {
-	const { requestMessage } = useContext(ShoppingCartContext);
+	const { requestMessage} = useContext(ShoppingCartContext);
 
 	const messageExists =
 		requestMessage.isLoading ||
 		requestMessage.isError ||
 		requestMessage.isSuccessful;
+	
 
 	return (
 		<>
