@@ -1,5 +1,5 @@
 /**
- * INPUT Action Types constants
+ * Input Actions
  */
 const INPUT = 'INPUT_USER';
 const BLUR = 'INPUT_BLUR';

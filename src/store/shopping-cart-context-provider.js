@@ -2,13 +2,19 @@ import PropTypes from 'prop-types';
 import { useEffect, useReducer, useState } from 'react';
 import UseHttp from '../hooks/use-http';
 import CartReducer, { defaultCartReducer } from '../reducers/cart-reducer';
+import RequestMessageReducer, {
+	defaultMessageReducer,
+} from '../reducers/request-message-reducer';
 import { ENDPOINT, headerJSON } from '../utils/http-utils';
 import ShoppingCartContext from './shopping-cart-context';
 
 const ShoppingCartContextProvider = ({ children }) => {
 	const [albums, setAlbums] = useState([]);
 	const [cartState, dispatchCart] = useReducer(CartReducer, defaultCartReducer);
-	const [requestMessage, setRequestMessage] = useState();
+	const [requestMessage, dispatchRequestMessage] = useReducer(
+		RequestMessageReducer,
+		defaultMessageReducer
+	);
 
 	const transformAlbums = (albumsFetched) => {
 		const albumsArr = [];
@@ -52,12 +58,16 @@ const ShoppingCartContextProvider = ({ children }) => {
 		dispatchCart({ type: 'RESET_CART' });
 	};
 
-	const handleSetRequestMessage = (message) => {
-		setRequestMessage(message);
+	const handleSetRequestMessage = (message, isError) => {
+		dispatchRequestMessage({
+			type: 'SET_MESSAGE',
+			value: message,
+			isError,
+		});
 	};
 
 	const handleResetRequestMessage = () => {
-		setRequestMessage(null);
+		dispatchRequestMessage({ type: 'RESET_MESSAGE' });
 	};
 
 	return (
