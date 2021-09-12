@@ -16,14 +16,14 @@ export const defaultCartReducer = {
 	totalPrice: 0,
 };
 
-const CartReducer = (action, state) => {
+const CartReducer = (state, action) => {
 	/**
 	 * Increase item amount if item already exists,
 	 * otherwise insert new item in items.
 	 */
 	if (action.type === ADD) {
 		const currItems = state.items;
-		const inputItem = action.value;
+		const inputItem = action.item;
 
 		let updatedItems = [];
 
@@ -32,15 +32,15 @@ const CartReducer = (action, state) => {
 		const existingIndex = findExistingIdIndex(inputItem.id, currItems);
 
 		/* Item already exists, increase amount */
-		if (existingIndex) {
+		if (existingIndex !== -1) {
 			const existingItem = currItems[existingIndex];
 			const updatedItem = {
-				...existingIndex,
+				...existingItem,
 				amount: existingItem.amount + 1,
 			};
 
 			updatedItems = [...currItems];
-			updatedItems[existingItem] = updatedItem;
+			updatedItems[existingIndex] = updatedItem;
 		} else {
 			updatedItems = currItems.concat(inputItem);
 		}
@@ -86,7 +86,7 @@ const CartReducer = (action, state) => {
 		return defaultCartReducer;
 	}
 
-	return CartReducer;
+	return defaultCartReducer;
 };
 
 export default CartReducer;

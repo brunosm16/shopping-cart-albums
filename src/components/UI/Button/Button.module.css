@@ -2,4 +2,5 @@
 	outline: none;
 	text-transform: capitalize;
 	cursor: pointer;
+	transition: var(--transition);
 }

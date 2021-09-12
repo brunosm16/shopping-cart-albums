@@ -1,44 +1,12 @@
 import PropTypes from 'prop-types';
-import { useEffect, useReducer, useState } from 'react';
-import UseHttp from '../hooks/use-http';
+import { useReducer, useState } from 'react';
 import CartReducer, { defaultCartReducer } from '../reducers/cart-reducer';
-import { ENDPOINT, headerJSON } from '../utils/http-utils';
 import ShoppingCartContext from './shopping-cart-context';
 
 const ShoppingCartContextProvider = ({ children }) => {
 	const [albums, setAlbums] = useState([]);
 	const [cartState, dispatchCart] = useReducer(CartReducer, defaultCartReducer);
 	const [requestMessage, setRequestMessage] = useState();
-
-	const transformAlbums = (albumsFetched) => {
-		const albumsArr = [];
-
-		Object.keys(albumsFetched).forEach((key) => {
-			albumsArr.push({
-				id: key,
-				artist: albumsFetched[key].artis,
-				name: albumsFetched[key].name,
-				price: albumsFetched[key].price,
-				releaseDate: albumsFetched[key].releaseDate,
-				stockLimit: albumsFetched[key].stockLimit,
-			});
-		});
-
-		setAlbums(albumsArr);
-	};
-
-	const { sendRequest: fetchAlbums } = UseHttp();
-
-	useEffect(() => {
-		fetchAlbums(
-			{
-				url: `${ENDPOINT}/albums.json`,
-				method: 'GET',
-				headers: headerJSON,
-			},
-			transformAlbums
-		);
-	}, [fetchAlbums]);
 
 	const handleAddCartItem = (item) => {
 		dispatchCart({ type: 'ADD_ITEM', item });
@@ -50,6 +18,10 @@ const ShoppingCartContextProvider = ({ children }) => {
 
 	const handleResetCartItem = () => {
 		dispatchCart({ type: 'RESET_CART' });
+	};
+
+	const handleLoadAlbums = (albumsArr) => {
+		setAlbums((previousData) => [...previousData, ...albumsArr]);
 	};
 
 	const handleSetRequestMessage = (message) => {
@@ -64,13 +36,15 @@ const ShoppingCartContextProvider = ({ children }) => {
 		<ShoppingCartContext.Provider
 			value={{
 				albums,
-				cart: cartState,
+				items: cartState.items,
+				totalPrice: cartState.totalPrice,
 				requestMessage,
-				onSetRequestMessage: handleSetRequestMessage,
-				onResetRequestMessage: handleResetRequestMessage,
 				onAddCartItem: handleAddCartItem,
 				onRemoveCartItemById: handleRemoveCartItemById,
 				onResetCartItem: handleResetCartItem,
+				onLoadAlbums: handleLoadAlbums,
+				onSetRequestMessage: handleSetRequestMessage,
+				onResetRequestMessage: handleResetRequestMessage,
 			}}
 		>
 			{children}

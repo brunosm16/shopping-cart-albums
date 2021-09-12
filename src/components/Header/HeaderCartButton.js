@@ -7,12 +7,9 @@ import HeaderCartForm from './HeaderCartForm';
 const HeaderCartButton = () => {
 	const [formIsOpen, setFormIsOpen] = useState(false);
 
-	const { cart } = useContext(ShoppingCartContext);
+	const { items } = useContext(ShoppingCartContext);
 
-	const price = cart.items.reduce(
-		(currNumber, item) => currNumber + item.amount,
-		0
-	);
+	const price = items.reduce((currNumber, item) => currNumber + item.amount, 0);
 
 	const handleConfirmOrder = (order) => {
 		setFormIsOpen(false);

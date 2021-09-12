@@ -1,0 +1,17 @@
+.shopping {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem 1rem;
+    margin: 0 auto;
+    height: 80vh;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow-dark);
+    background: var(--clr-purple-1);
+}
+
+@media screen and (min-width: 800px) {
+    .shopping {
+        flex-direction: row;
+    }
+}

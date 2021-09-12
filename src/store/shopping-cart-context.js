@@ -3,13 +3,15 @@ import React from 'react';
 
 const context = {
 	albums: [],
-	cart: {},
+	items: [],
+	totalPrice: 0,
 	requestMessage: {},
-	onSetRequestMessage: (isError, isLoading, isSuccessful, message) => {},
-	onResetRequestMessage: () => {},
 	onAddCartItem: (item) => {},
 	onRemoveCartItemById: (id) => {},
 	onResetCartItem: () => {},
+	onLoadAlbums: (albumsArr) => {},
+	onSetRequestMessage: (isError, isLoading, isSuccessful, message) => {},
+	onResetRequestMessage: () => {},
 };
 
 const ShoppingCartContext = React.createContext(context);

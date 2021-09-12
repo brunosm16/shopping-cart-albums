@@ -15,7 +15,7 @@ import Modal from '../UI/Modal/Modal';
 import Button from '../UI/Button/Button';
 import ShoppingCartContext from '../../store/shopping-cart-context';
 
-const HeaderCartForm = ({ totalPrice, onCancel, onConfirm }) => {
+const HeaderCartForm = ({ onCancel, onConfirm }) => {
 	const {
 		value: nameValue,
 		inputIsValid: nameIsValid,
@@ -57,7 +57,7 @@ const HeaderCartForm = ({ totalPrice, onCancel, onConfirm }) => {
 	const postalCodeRef = useRef();
 	const emailRef = useRef();
 
-	const cartCtx = useContext(ShoppingCartContext);
+	const { items, totalPrice } = useContext(ShoppingCartContext);
 
 	const formIsValid =
 		nameIsValid && addressIsValid && postalCodeIsValid && emailIsValid;
@@ -118,7 +118,7 @@ const HeaderCartForm = ({ totalPrice, onCancel, onConfirm }) => {
 		return formIsValid ? saveInput() : focusOnInputError();
 	};
 
-	const emptyOrder = cartCtx.cart.items;
+	const emptyOrder = items.length === 0;
 
 	const emptyOrdersMessage = (
 		<h3 className={styles['empty-orders-message']}>no orders yet</h3>
@@ -212,13 +212,11 @@ const HeaderCartForm = ({ totalPrice, onCancel, onConfirm }) => {
 };
 
 HeaderCartForm.defaultProps = {
-	totalPrice: 0,
 	onCancel: () => {},
 	onConfirm: () => {},
 };
 
 HeaderCartForm.propTypes = {
-	totalPrice: PropTypes.number,
 	onCancel: PropTypes.func,
 	onConfirm: () => {},
 };

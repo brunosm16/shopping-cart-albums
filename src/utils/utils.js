@@ -43,3 +43,22 @@ export const validateAddress = (address) => address.trim().length >= 8;
 
 export const validatePostalCode = (postalCode) =>
 	postalCode.trim().length >= 12;
+
+/**
+ * Insert a 0 in front of numbers lower than 0
+ */
+const zeroInFront = (number) => (number < 10 ? `0${number}` : `${number}`);
+
+/**
+ * Format JavaScript Date to 'yyyy-mm-dd'
+ */
+export const dateToHTML = (date) => {
+	const jsDate = new Date(date);
+
+	const day = zeroInFront(jsDate.getDate());
+	// JavaScript Date months starts as 0 (January)
+	const month = zeroInFront(jsDate.getMonth() + 1);
+	const year = jsDate.getFullYear();
+
+	return `${year}-${month}-${day}`;
+};
