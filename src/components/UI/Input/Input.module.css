@@ -1,0 +1,23 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.container input {
+	outline: none;
+}
+
+.container label,
+.error-msg {
+	text-transform: capitalize;
+}
+
+.container.invalid input {
+	box-shadow: 0 2px 3px 3px rgba(230, 20, 55, 0.892);
+}
+
+.container.invalid label,
+.error-msg {
+	color: #df0d30;
+}

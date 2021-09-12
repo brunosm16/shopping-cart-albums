@@ -33,3 +33,13 @@ export const findItemById = (id, list) => {
 
 	return index !== -1 ? list[index] : undefined;
 };
+
+export const validateName = (name) => name.trim().length >= 4;
+
+export const validateEmail = (email) =>
+	email.trim().length >= 6 && email.includes('@');
+
+export const validateAddress = (address) => address.trim().length >= 8;
+
+export const validatePostalCode = (postalCode) =>
+	postalCode.trim().length >= 12;
