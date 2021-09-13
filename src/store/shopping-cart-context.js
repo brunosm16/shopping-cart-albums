@@ -12,6 +12,7 @@ const context = {
 	onConfirmOrder: (order) => {},
 	isLoading: '',
 	requestError: '',
+	showHeaderRequest: false,
 };
 
 const ShoppingCartContext = React.createContext(context);

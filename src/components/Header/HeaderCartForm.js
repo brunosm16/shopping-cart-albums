@@ -158,7 +158,7 @@ const HeaderCartForm = ({ onCancel, onConfirm }) => {
 			<div className={styles.control}>
 				<Input
 					label="postal code"
-					errorMsg="postal code must have at least 12 characters"
+					errorMsg="postal code must have at least 4 characters"
 					isInvalid={postalCodeHasError}
 					id="postalCode"
 					type="text"

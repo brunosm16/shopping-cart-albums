@@ -6,12 +6,11 @@
 }
 
 .request-header h3 {
-	padding: 0.75rem;
+	padding: 1rem;
 }
 
 .error {
 	background: var(--clr-red);
-	color: var(--clr-white);
 }
 
 .loading {

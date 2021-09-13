@@ -27,6 +27,9 @@
 	border-color: transparent;
 	padding: 0.25rem 0.5rem;
 	background: var(--clr-primary-2);
+	color:var(--clr-white);
+	font-weight: bold;
+	font-size: 1.2rem;
 }
 
 .control label {
