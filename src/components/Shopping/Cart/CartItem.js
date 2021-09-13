@@ -23,7 +23,7 @@ const CartItem = ({ id, name, price, amount, onUpdateAmount }) => {
 	const handleIncreaseAmount = () => {
 		const amountResult = amount + 1;
 
-		if (amountResult < currAlbum.stockLimit) {
+		if (amountResult <= currAlbum.stockLimit) {
 			onUpdateAmount(
 				{
 					...itemObj,

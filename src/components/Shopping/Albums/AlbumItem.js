@@ -1,16 +1,37 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import styles from './AlbumItem.module.css';
 import Button from '../../UI/Button/Button';
 import ListItem from '../../UI/List/ListItem';
+import ShoppingCartContext from '../../../store/shopping-cart-context';
+import { findItemById } from '../../../utils/utils';
 
 const AlbumItem = ({ id, name, artist, price, releaseDate, onAddItem }) => {
+	const { albums, items } = useContext(ShoppingCartContext);
+
+	const currAlbum = findItemById(id, albums);
+	const currItem = findItemById(id, items);
+
 	const handleAddItem = () => {
-		onAddItem({
-			id,
-			name,
-			price,
-			amount: 1,
-		});
+		if (currItem) {
+			const amountResult = currItem.amount + 1;
+
+			if (amountResult <= currAlbum.stockLimit) {
+				onAddItem({
+					id,
+					name,
+					price,
+					amount: 1,
+				});
+			}
+		} else {
+			onAddItem({
+				id,
+				name,
+				price,
+				amount: 1,
+			});
+		}
 	};
 
 	return (
