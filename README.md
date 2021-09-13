@@ -1,8 +1,8 @@
 
 # 💿 Shopping Cart Albums
-Shopping Cart de albums implementado usando a Context API. 
+Shopping Cart de álbuns implementado usando a Context API. 
 
-O Usuário pode adicionar produtos (álbums) ao seu Cart e realizar o pedido em um formulário, a confirmação do pedido envia uma requisição HTTP para o back-end da aplicação e o pedido é registrado. Durante a requisição são mostradas mensagens informando ao usuário o atual estado da requisição. Os produtos (álbums) e os pedidos(orders) são armazenados em um banco de dados em tempo real do Firebase. 
+O Usuário pode adicionar álbuns ao seu Cart e realizar o pedido em um formulário, a confirmação do pedido envia uma requisição HTTP para o back-end da aplicação e o pedido é registrado. Durante a requisição são mostradas mensagens informando ao usuário o atual estado da requisição. Os álbuns e os pedidos(orders) são armazenados em um banco de dados em tempo real do Firebase. 
 
 ## 💻 Tecnologias Utilizadas
 
@@ -22,4 +22,4 @@ O Usuário pode adicionar produtos (álbums) ao seu Cart e realizar o pedido em 
 
 ## 📸 Screenshots
 
-![enter image description here](https://i.ibb.co/phWJNhG/Shopping-Cart-Albums.png)
+![enter image description here](https://i.ibb.co/vh2KkJz/Shopping-Cart.png)
