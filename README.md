@@ -12,7 +12,7 @@ E-commerce feito com React Js e a Context API.
 - Adiciona e remove albums do carro de compras on-line.
 - Usa a Context API para atualizações instantâneas na página.
 - Usa o banco de dados em tempo real do Firebase para armazenar os dados da aplicação. 
-- Mostra notificações informando sobre a estado de cada requisição HTTP.
+- Mostra notificações informando sobre o estado de cada requisição HTTP.
 - Design Responsivo usando SASS. 
 
 ##  ▶️ Build/Executar
