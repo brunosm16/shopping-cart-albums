@@ -20,6 +20,6 @@ E-commerce feito com React Js e a Context API.
 - Node Js
 - NPM
 1. Instalar os pacotes necessários : `npm install`
-2. Iniciar a : `npm start` 
+2. Iniciar a aplicação: `npm start` 
 5. Abrir o browser em [localhost:3000](https://localhost:3000/).
 
