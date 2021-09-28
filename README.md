@@ -4,21 +4,22 @@
 ![enter image description here](https://s9.gifyu.com/images/ShoppingCart.gif)
 
 
-## 🔎 Overview
-Project that uses React and the Context API to build a  friendly user e-commerce with instant visual updates and visual alert messages while processing requests. CSS Modules were used for styling Components and project also uses Firebase as Backend as a Service(BaaS). 
+## 🔎 Descrição
+E-commerce feito com React Js e a Context API.
 
-**Features**
+**Recursos**
 
-- Add and remove albums from Cart.
-- Uses Context API for instant visual updates.
-- On successful/unsuccessful requests visual alerts are shown for a short period of time. 
-- Responsive Design.
+- Adiciona e remove albums do carro de compras on-line.
+- Usa a Context API para atualizações instantâneas na página.
+- Usa o banco de dados em tempo real do Firebase para armazenar os dados da aplicação. 
+- Mostra notificações informando sobre a estado de cada requisição HTTP.
+- Design Responsivo usando SASS. 
 
-##  ▶️ Build/Run
-**Requirements**
+##  ▶️ Build/Executar
+**Requisitos**
 - Node Js
 - NPM
-1. Install needed packages : `npm install`
-2. Start application: `npm start` 
-5. Open [localhost:3000](https://localhost:3000/) to view it in the browser. 
+1. Instalar os pacotes necessários : `npm install`
+2. Iniciar a : `npm start` 
+5. Abrir o browser em [localhost:3000](https://localhost:3000/).
 
